@@ -3,7 +3,7 @@ import Lenis from 'lenis'
 import './App.css'
 
 // Components (crearemos estos después)
-import Navbar from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/NavBar'
 import Hero from './components/Hero/Hero'
 import Clients from './components/Clients/Clients'
 import Services from './components/Services/Services'
