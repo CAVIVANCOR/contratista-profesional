@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
 import { Menubar } from 'primereact/menubar'
 import { Button } from 'primereact/button'
-import './Navbar.css'
+import './NavBar.css'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
