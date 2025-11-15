@@ -1,0 +1,97 @@
+.clients {
+  background: var(--bg-secondary);
+}
+
+.clients-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.clients-header h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.clients-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.client-card {
+  background: var(--bg-card);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-normal);
+  border: 2px solid transparent;
+  min-height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.client-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 0;
+}
+
+.client-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-xl);
+}
+
+.client-card:hover::before {
+  opacity: 0.1;
+}
+
+.client-card i {
+  color: var(--primary-color);
+  transition: all var(--transition-normal);
+  position: relative;
+  z-index: 1;
+}
+
+.client-card:hover i {
+  transform: scale(1.1);
+  color: var(--accent-color);
+}
+
+.client-card p {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .clients-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+  }
+  
+  .client-card {
+    padding: var(--spacing-lg);
+    min-height: 150px;
+  }
+}
