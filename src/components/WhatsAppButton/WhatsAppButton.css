@@ -1,1 +1,95 @@
-/* Estilos personalizados para WhatsApp flotante si es necesario */
+/* Botón flotante de WhatsApp */
+.whatsapp-float-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-float-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-icon {
+  width: 35px;
+  height: 35px;
+  color: white;
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  right: 70px;
+  background: #128C7E;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease;
+}
+
+.whatsapp-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid #128C7E;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .whatsapp-float-button {
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .whatsapp-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .whatsapp-tooltip {
+    display: none;
+  }
+}
