@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Button } from 'primereact/button'
 import { ChevronDown } from 'lucide-react'
+import { content } from '../../data/content'
 import './Hero.css'
 
 const Hero = () => {
@@ -136,7 +137,7 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              J-ALVAREZ
+              {content.company.shortName}
             </motion.span>
             <motion.span 
               className="gradient-text"
@@ -144,7 +145,7 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              {' '}Contratistas Generales S.A.C.
+              {' '}{content.hero.title}
             </motion.span>
           </motion.h1>
           
@@ -154,11 +155,8 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            Somos una <strong>ORGANIZACIÓN especializada en Ingeniería, Construcción y Gerencia de Proyectos</strong> que equilibra las demandas 
-            concurrentes de <strong>calidad, alcance, tiempo y costos</strong>; adaptando las especificaciones, los planes y el enfoque a las diversas 
-            inquietudes y expectativas de nuestros clientes.
-          </motion.p>
+            dangerouslySetInnerHTML={{ __html: content.hero.description.replace(/calidad, alcance, tiempo y costos/g, '<strong>calidad, alcance, tiempo y costos</strong>') }}
+          />
           
           <motion.p 
             className="hero-description hero-clients"
@@ -166,9 +164,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            Con un equipo multidisciplinario de profesionales expertos en <strong>carpintería, drywall, acabados y construcción</strong>, 
-            hemos trabajado con más de <strong>50 empresas líderes</strong> como Sinohydro Corporation Limited, China Power Investment Corporation 
-            (Colegios Emblemáticos), Inmobiliaria Montegrande, Tambo+, Aruma, Tiendas por Retail Cosapi, Renzo Costa, Mall del Sur y FG Edificaciones.
+            {content.hero.descriptionExtended}
           </motion.p>
           
           {/* Botones con animación de escala */}
@@ -183,7 +179,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Button 
-                label="Solicitar Cotización" 
+                label={content.hero.cta.primary} 
                 icon="pi pi-send"
                 className="hero-cta-primary"
                 onClick={() => scrollToSection('contact')}
@@ -195,7 +191,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Button 
-                label="Ver Proyectos" 
+                label={content.hero.cta.secondary} 
                 icon="pi pi-images"
                 className="hero-cta-secondary"
                 onClick={() => scrollToSection('portfolio')}
@@ -212,11 +208,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            {[
-              { value: '500+', label: 'Proyectos Completados' },
-              { value: '50+', label: 'Empresas Líderes' },
-              { value: '100%', label: 'Calidad Garantizada' },
-            ].map((stat, index) => (
+            {content.hero.stats.map((stat, index) => (
               <motion.div 
                 key={index}
                 className="stat"

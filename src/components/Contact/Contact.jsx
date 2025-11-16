@@ -9,6 +9,7 @@ import { InputTextarea } from 'primereact/inputtextarea'
 import { Button } from 'primereact/button'
 import { Toast } from 'primereact/toast'
 import { useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import './Contact.css'
 
 // Esquema de validación con Zod
@@ -42,11 +43,27 @@ const Contact = () => {
     setIsSubmitting(true)
     
     try {
-      // Aquí irá la integración con EmailJS
-      console.log('Datos del formulario:', data)
+      // Configuración de EmailJS
+      const serviceId = 'service_1kxu4nq'
+      const templateId = 'template_7qs6dfi'
+      const publicKey = 'tPkwxs8CKucM_2-ap'
       
-      // Simulación de envío
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Preparar los parámetros del template
+      const templateParams = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        company: data.company || 'No especificada',
+        message: data.message,
+      }
+      
+      // Enviar email usando EmailJS
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      )
       
       toast.current.show({
         severity: 'success',
@@ -57,6 +74,7 @@ const Contact = () => {
       
       reset()
     } catch (error) {
+      console.error('Error al enviar email:', error)
       toast.current.show({
         severity: 'error',
         summary: 'Error',

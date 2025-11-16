@@ -1,5 +1,10 @@
 .contact {
+  min-height: 100vh;
   background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  padding-top: calc(80px + var(--spacing-xl));
+  padding-bottom: var(--spacing-2xl);
 }
 
 .contact-header {
