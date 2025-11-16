@@ -4,7 +4,7 @@ import './WhatsAppButton.css'
 const WhatsAppButton = () => {
   return (
     <FloatingWhatsApp
-      phoneNumber="+51999999999"
+      phoneNumber="+51947175210"
       accountName="J-Alvarez Contratistas"
       statusMessage="En línea"
       chatMessage="¡Hola! Bienvenido a J-Alvarez Contratistas Generales. ¿En qué podemos ayudarte?"
